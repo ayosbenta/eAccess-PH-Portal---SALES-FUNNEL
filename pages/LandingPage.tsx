@@ -15,14 +15,16 @@ const HeroSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => {
   return (
     <section className="bg-brand-primary text-white text-center py-20 px-4" style={{backgroundImage: `url('https://picsum.photos/1600/900?blur=5&random=1')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay', backgroundColor: 'rgba(13, 71, 161, 0.8)'}}>
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4 animate-fade-in-down">
-          Simulan ang Iyong <span className="text-brand-secondary">Travel Business</span> Ngayon!
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 animate-fade-in-down">
+          Discover How You Can Start Your Own Travel Business and Earn from Every Booking.
+          <span className="block mt-4 text-3xl md:text-4xl">
+            <span className="bg-brand-secondary text-brand-dark px-4 py-2 rounded-md inline-block font-semibold tracking-wide transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                Kahit Baguhan Ka Pa!
+            </span>
+          </span>
         </h1>
-        <p className="text-xl md:text-2xl font-light mb-6 animate-fade-in-up">
-          Walang experience? No problem!
-        </p>
-        <p className="max-w-2xl mx-auto text-gray-200 mb-8">
-          Ang eAccess PH Portal ay ang iyong all-in-one solution para magtayo ng sarili mong travel and services business. Kumita sa bawat booking, sa ilalim ng iyong sariling brand name.
+        <p className="max-w-3xl mx-auto text-gray-200 text-lg md:text-xl mb-8 animate-fade-in-up">
+          Ang eAccess PH ang all-in-one travel system na tutulong sa’yo makapagsimula agad. Gamitin ang platform, i-build ang sarili mong brand, at kumita nang hindi nagbabayad ng mahal na franchise fee.
         </p>
         
         <CountdownTimer targetDate={targetDate} />
