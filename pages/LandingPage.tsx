@@ -4,7 +4,7 @@ import VideoModal from '../components/VideoModal';
 import { Testimonial } from '../types';
 import { 
     BoltIcon, GraduationCapIcon, GreenCheckIcon, InsuranceIcon, PackageBriefcaseIcon, PlayIcon, 
-    ServicesAirplaneIcon, StarIcon, StorefrontIcon, TargetIcon, WalletIcon 
+    ServicesAirplaneIcon, SparklesIcon, StarIcon, StorefrontIcon, TargetIcon, WalletIcon 
 } from '../components/icons';
 
 // --- Hero Section --- //
@@ -67,22 +67,47 @@ const VideoPreviewSection: React.FC<{ onPlayClick: () => void; videoId: string }
 );
 
 // --- About Section --- //
-const AboutSection = () => (
-  <section className="py-16 bg-gray-100">
-    <div className="max-w-5xl mx-auto px-4 text-center">
-      <h2 className="text-3xl font-bold mb-12">About eAccess PH Portal</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <InfoCard title="All-In-One System" description="Isang portal para sa lahat ng travel at services needs mo." />
-        <InfoCard title="Your Own Brand" description="Operate under your own business name and logo. Ikaw ang boss!" />
-        <InfoCard title="No Networking" description="Purely business. Walang hidden fees, walang recruitment na kailangan." />
-        <InfoCard title="User-Friendly" description="Simple at modern ang design, madaling gamitin kahit sa mga beginners." />
-      </div>
-    </div>
-  </section>
-);
+const AboutSection = () => {
+    const infoCards = [
+        {
+            icon: <PackageBriefcaseIcon />,
+            title: "All-In-One System",
+            description: "Isang portal para sa lahat ng travel at services needs mo."
+        },
+        {
+            icon: <StorefrontIcon />,
+            title: "Your Own Brand",
+            description: "Operate under your own business name and logo. Ikaw ang boss!"
+        },
+        {
+            icon: <WalletIcon />,
+            title: "Maximize Your Earning",
+            description: "Earn from commissions, service fees, and markups. You control your pricing."
+        },
+        {
+            icon: <SparklesIcon />,
+            title: "User-Friendly",
+            description: "Simple at modern ang design, madaling gamitin kahit sa mga beginners."
+        }
+    ];
 
-const InfoCard: React.FC<{ title: string; description: string }> = ({ title, description }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+    return (
+        <section className="py-16 bg-gray-100">
+            <div className="max-w-5xl mx-auto px-4 text-center">
+                <h2 className="text-3xl font-bold mb-12">About eAccess PH Portal</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {infoCards.map(card => (
+                        <InfoCard key={card.title} icon={card.icon} title={card.title} description={card.description} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const InfoCard: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
+  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+    <div className="h-12 w-12 text-brand-primary mx-auto mb-4">{icon}</div>
     <h3 className="font-bold text-xl mb-2 text-brand-primary">{title}</h3>
     <p className="text-gray-600">{description}</p>
   </div>
