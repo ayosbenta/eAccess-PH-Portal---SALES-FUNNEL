@@ -294,7 +294,10 @@ const TestimonialsSection: React.FC<{ onImageClick: (url: string) => void }> = (
     return (
         <section className="py-16 bg-gray-100">
             <div className="max-w-5xl mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-12">Success Stories</h2>
+                <h2 className="text-3xl font-bold text-center mb-4">Success Stories</h2>
+                <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                    Narito ang mga tunay na kwento ng mga ordinaryong taong nagsimula lang tulad mo, at ngayon ay kumikita na sa sarili nilang travel business.
+                </p>
                 <div className="grid md:grid-cols-3 gap-8">
                     {testimonials.map(t => (
                         <div key={t.id} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group transform hover:-translate-y-2 transition-transform duration-300" onClick={() => onImageClick(t.image)}>
