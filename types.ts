@@ -1,3 +1,8 @@
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void;
+  }
+}
 
 // FIX: Added missing LeadData interface. This was causing an import error in context/FunnelContext.tsx.
 export interface LeadData {

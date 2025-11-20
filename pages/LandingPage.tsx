@@ -352,6 +352,9 @@ const LandingPage: React.FC = () => {
     const presentationVideoId = "FvOz70rWHXM";
 
     const handleCTAClick = () => {
+        if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead');
+        }
         window.open('https://eaccessph.com/register/100000799', '_blank', 'noopener,noreferrer');
     };
 
