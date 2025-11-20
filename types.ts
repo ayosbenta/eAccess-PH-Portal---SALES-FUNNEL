@@ -11,6 +11,7 @@ export interface Testimonial {
   id: number;
   image: string;
   name: string;
+  business: string;
   text: string;
 }
 

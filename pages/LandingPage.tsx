@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CountdownTimer from '../components/CountdownTimer';
 import VideoModal from '../components/VideoModal';
+import ImageModal from '../components/ImageModal'; // Import ImageModal
 import { Testimonial } from '../types';
 import { 
     BoltIcon, GraduationCapIcon, GreenCheckIcon, InsuranceIcon, PackageBriefcaseIcon, PlayIcon, 
@@ -13,7 +14,7 @@ const HeroSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => {
   targetDate.setHours(targetDate.getHours() + 24);
 
   return (
-    <section className="bg-brand-primary text-white text-center py-20 px-4" style={{backgroundImage: `url('https://picsum.photos/1600/900?blur=5&random=1')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay', backgroundColor: 'rgba(13, 71, 161, 0.8)'}}>
+    <section className="bg-brand-primary text-white text-center py-20 px-4" style={{backgroundImage: `url('https://images.unsplash.com/photo-1551293366-4f8a0113881c?q=80&w=2070&auto=format&fit=crop')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay', backgroundColor: 'rgba(13, 71, 161, 0.8)'}}>
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 animate-fade-in-down">
           Discover How You Can Start Your Own Travel Business and Earn from Every Booking.
@@ -265,11 +266,29 @@ const WhyChooseUsSection = () => {
 
 
 // --- Testimonials Section --- //
-const TestimonialsSection = () => {
+const TestimonialsSection: React.FC<{ onImageClick: (url: string) => void }> = ({ onImageClick }) => {
     const testimonials: Testimonial[] = [
-        { id: 1, image: 'https://picsum.photos/100/100?random=3', name: 'Juan Dela Cruz', text: 'Sobrang laking tulong ng eAccess! Kahit nasa bahay lang ako, kumikita ako. Madali lang gamitin yung system.' },
-        { id: 2, image: 'https://picsum.photos/100/100?random=4', name: 'Maria Santos', text: 'Dati, pangarap ko lang magkaroon ng travel agency. Ngayon, totoo na! Salamat eAccess PH!' },
-        { id: 3, image: 'https://picsum.photos/100/100?random=5', name: 'Peter Tan', text: 'Highly recommended! Ang ganda ng support system nila at laging may training para sa aming mga partners.' },
+        { 
+            id: 1, 
+            image: 'https://i.imgur.com/K6oWS6b.jpeg', 
+            name: 'Julie May C. Azucena', 
+            business: 'Mekmek Travel and Tours',
+            text: "Ako po si Julie May Cabalo Azucena isang OFW sa Dubai bukod po sa sahod ko kumikita po ako nang extra income malaking tulong talga siya lalo na sa katulad kong isang widow at may anak na pinapaaral sa Pinas buti nalang sinubukan ko, salamat Lord, salamat eAccess 100% legit travel Company. Very fast and easy to use." 
+        },
+        { 
+            id: 2, 
+            image: 'https://i.imgur.com/wG4O4JH.jpeg', 
+            name: 'Rachel Dalino', 
+            business: 'Dalino Travel and Tours Services',
+            text: "Ako po si RACHEL DALINO isang OFW sa HONGKONG bukod sa sahod ko as OFW Kumikita din po ako sa FLIGHT BOOKINGS. When i first met EACCESS nagustohan ko po agad ito dahil mas mababa po ang pamasahe nya kysa sa ibang company nag-avail po ako dahil napakababa po ang mga fare lalo na ang PROMOS & INTERNATIONAL FARE. Pero para sa isang OFW na katulad ko all of this is not easy maraming ups and downs pero ONCE YOU BUILD A BUSINESS WITH A HEART AND DETERMINATION WALANG IMPOSSIBLE SA LAHAT. DO THIS BUSINESS, STUDY, WORK HARD and ONE DAY makikita mo ang lahat ng pinaghihirapan mo." 
+        },
+        { 
+            id: 3, 
+            image: 'https://i.imgur.com/qONwVfi.jpeg', 
+            name: 'Riza Tejano', 
+            business: 'RizBartz Travel and Tours',
+            text: "My name is Riza May Tejano OFW and currently working in Hong Kong since 2013. When eAccess was introduced to me by a friend, i didn't hesitate to be part of the company because I know that if you work hard and be positive you will get a reward for your self, when I joined the business at the first time. I was able to earned some extra income by booking online airline tickets and other products offered by the company like bills payment, passport and Psa assistance and also inviting other friends to have travel and tour business by receiving a commission. I'm so thankful and proud to be an eaccess travel agent because I was able to learn more knowledge and broaden my ability to spread about this business opportunity to others and for my self. With the help of the company they are offering a business online presentations and meetings to everyone who are willing to learn and be a part of the company. “To all my Co-Ofw never underestimate our selves that we can only work from our employers and depend from our salary but we can do much more through this part time job offering a business opportunity for everyone. Join now our growing business opportunity to experience your future unlimited sales”."
+        },
     ];
 
     return (
@@ -278,10 +297,12 @@ const TestimonialsSection = () => {
                 <h2 className="text-3xl font-bold text-center mb-12">Success Stories</h2>
                 <div className="grid md:grid-cols-3 gap-8">
                     {testimonials.map(t => (
-                        <div key={t.id} className="bg-white p-6 rounded-lg shadow-lg text-center">
-                            <img src={t.image} alt={t.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-brand-secondary"/>
-                            <p className="text-gray-600 italic mb-4">"{t.text}"</p>
-                            <p className="font-bold text-brand-primary">{t.name}</p>
+                        <div key={t.id} className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group transform hover:-translate-y-2 transition-transform duration-300" onClick={() => onImageClick(t.image)}>
+                            <img 
+                                src={t.image} 
+                                alt={`Testimonial from ${t.name}`} 
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
                         </div>
                     ))}
                 </div>
@@ -292,7 +313,7 @@ const TestimonialsSection = () => {
 
 // --- Join Now Section --- //
 const JoinNowSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => (
-    <section className="py-20 bg-brand-primary text-white text-center" style={{backgroundImage: `url('https://picsum.photos/1600/900?blur=5&random=6')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay', backgroundColor: 'rgba(13, 71, 161, 0.8)'}}>
+    <section className="py-20 bg-brand-primary text-white text-center" style={{backgroundImage: `url('https://images.unsplash.com/photo-1528698827591-e19ccd7e23ec?q=80&w=2070&auto=format&fit=crop')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundBlendMode: 'overlay', backgroundColor: 'rgba(13, 71, 161, 0.8)'}}>
         <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">Ready ka na bang maging next success story?</h2>
             <p className="text-gray-200 mb-8 text-lg">Huwag palampasin ang pagkakataon. Ang promo ay para sa limited slots lang!</p>
@@ -324,6 +345,7 @@ const NoticeSection = () => (
 // --- Landing Page --- //
 const LandingPage: React.FC = () => {
     const [isVideoModalOpen, setVideoModalOpen] = useState(false);
+    const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
     const presentationVideoId = "FvOz70rWHXM";
 
     const handleCTAClick = () => {
@@ -341,13 +363,18 @@ const LandingPage: React.FC = () => {
             <PackageDetailsSection onCTAClick={handleCTAClick} />
             <IncomePotentialSection />
             <WhyChooseUsSection />
-            <TestimonialsSection />
+            <TestimonialsSection onImageClick={setSelectedImageUrl} />
             <JoinNowSection onCTAClick={handleCTAClick} />
             <NoticeSection />
             <VideoModal 
                 isOpen={isVideoModalOpen} 
                 onClose={() => setVideoModalOpen(false)} 
                 videoId={presentationVideoId} 
+            />
+            <ImageModal 
+                isOpen={!!selectedImageUrl} 
+                onClose={() => setSelectedImageUrl(null)} 
+                imageUrl={selectedImageUrl} 
             />
         </div>
     );
