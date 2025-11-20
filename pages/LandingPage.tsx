@@ -5,8 +5,9 @@ import CountdownTimer from '../components/CountdownTimer';
 import VideoModal from '../components/VideoModal';
 import { Testimonial } from '../types';
 import { 
-    BillsIcon, CheckCircleIcon, EloadIcon, FerryIcon, FlightIcon, HotelIcon, 
-    InsuranceIcon, PlayIcon, TourIcon, VisaIcon 
+    BillsIcon, BoltIcon, CheckCircleIcon, EloadIcon, FerryIcon, FlightIcon, 
+    GraduationCapIcon, HotelIcon, InsuranceIcon, PlayIcon, StorefrontIcon, 
+    TargetIcon, TourIcon, VisaIcon, WalletIcon 
 } from '../components/icons';
 
 // --- Hero Section --- //
@@ -133,7 +134,7 @@ const PackageDetailsSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClic
 
 const ServiceItem: React.FC<{ icon: React.ReactNode; name: string }> = ({ icon, name }) => (
     <div className="flex flex-col items-center">
-        {icon}
+        <div className="h-8 w-8 text-brand-primary">{icon}</div>
         <p className="mt-2 font-medium text-gray-700">{name}</p>
     </div>
 );
@@ -194,12 +195,12 @@ const IncomePotentialSection = () => (
 // --- Why Choose Us Section --- //
 const WhyChooseUsSection = () => {
     const benefits = [
-        { title: "Low Capital, Lifetime Access", description: "Isang beses na bayad lang, panghabangbuhay na business na." },
-        { title: "No Networking / No Quota", description: "Focus ka lang sa business mo, walang pressure sa sales." },
-        { title: "Ready-To-Use Platform", description: "Pagka-sign up mo, pwede ka na magsimula agad." },
-        { title: "Comprehensive Trainings", description: "May step-by-step video tutorials para sa'yo." },
-        { title: "Trusted & Reliable", description: "Legit at DTI-registered na kumpanya." },
-        { title: "Operate Under Your Own Name", description: "Ikaw ang bida. Build your own brand." }
+        { icon: <WalletIcon />, title: "Low Capital, Lifetime Access", description: "Isang beses na bayad lang, panghabangbuhay na business na." },
+        { icon: <TargetIcon />, title: "No Networking / No Quota", description: "Focus ka lang sa business mo, walang pressure sa sales." },
+        { icon: <BoltIcon />, title: "Ready-To-Use Platform", description: "Pagka-sign up mo, pwede ka na magsimula agad." },
+        { icon: <GraduationCapIcon />, title: "Comprehensive Trainings", description: "May step-by-step video tutorials para sa'yo." },
+        { icon: <InsuranceIcon />, title: "Trusted & Reliable", description: "Legit at DTI-registered na kumpanya." },
+        { icon: <StorefrontIcon />, title: "Operate Under Your Own Name", description: "Ikaw ang bida. Build your own brand." }
     ];
 
     return (
@@ -208,7 +209,8 @@ const WhyChooseUsSection = () => {
                 <h2 className="text-3xl font-bold text-center mb-12">Bakit eAccess PH?</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {benefits.map(benefit => (
-                        <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+                        <div key={benefit.title} className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                            <div className="mb-4 h-10 w-10 text-brand-primary">{benefit.icon}</div>
                             <h3 className="font-bold text-xl mb-2 text-brand-primary">{benefit.title}</h3>
                             <p className="text-gray-600">{benefit.description}</p>
                         </div>
