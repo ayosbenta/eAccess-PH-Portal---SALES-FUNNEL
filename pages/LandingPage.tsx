@@ -88,7 +88,7 @@ const InfoCard: React.FC<{ title: string; description: string }> = ({ title, des
 );
 
 // --- Package Details Section --- //
-const PackageDetailsSection = () => {
+const PackageDetailsSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => {
   const services = [
     "Flight Booking", "Hotel Booking", "Ferry Booking",
     "Tours and Packages", "Bills Payment", "E-Loading",
@@ -104,24 +104,24 @@ const PackageDetailsSection = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl font-extrabold text-center mb-4 text-blue-800">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-blue-800">
             Ang eAccess PH Portal <span className="text-amber-600">Business Package</span>
         </h2>
         
-        <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-xl shadow-2xl p-8 text-center my-12">
-            <p className="text-2xl font-bold tracking-widest uppercase">Lifetime Business Access</p>
+        <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-xl shadow-2xl p-6 md:p-8 text-center my-12">
+            <p className="text-xl md:text-2xl font-bold tracking-widest uppercase">Lifetime Business Access</p>
             <p className="text-sm font-light mt-1">Original Price: <span className="line-through">₱9,998</span></p>
-            <p className="font-extrabold my-2 text-8xl">
+            <p className="font-extrabold my-2 text-6xl sm:text-7xl md:text-8xl">
                 ₱4,998
             </p>
-            <p className="text-lg font-semibold tracking-wide">PROMO PRICE - One-Time Payment!</p>
+            <p className="text-base md:text-lg font-semibold tracking-wide">PROMO PRICE - One-Time Payment!</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div className="bg-blue-50 rounded-xl shadow-lg border-l-8 border-blue-400 p-6 h-full">
             <div className="flex items-center mb-4">
               <ServicesAirplaneIcon />
-              <h3 className="text-2xl font-bold text-blue-800 ml-3">Services Offered</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-blue-800 ml-3">Services Offered</h3>
             </div>
             <ul className="space-y-3">
               {services.map(service => (
@@ -136,7 +136,7 @@ const PackageDetailsSection = () => {
           <div className="bg-amber-50 rounded-xl shadow-lg border-l-8 border-amber-400 p-6 h-full">
             <div className="flex items-center mb-4">
               <PackageBriefcaseIcon />
-              <h3 className="text-2xl font-bold text-amber-900 ml-3">Package Inclusions</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-amber-900 ml-3">Package Inclusions</h3>
             </div>
             <ul className="space-y-3">
               {inclusions.map(inclusion => (
@@ -147,8 +147,17 @@ const PackageDetailsSection = () => {
               ))}
             </ul>
           </div>
-
         </div>
+
+        <div className="mt-12 text-center">
+            <button
+                onClick={onCTAClick}
+                className="bg-red-600 text-white font-extrabold text-xl sm:text-2xl md:text-3xl py-4 sm:py-5 px-10 sm:px-12 rounded-full shadow-lg hover:bg-red-700 transform hover:scale-105 transition-all duration-300 ease-in-out animate-blink"
+            >
+                GRAB THE ₱4,998 PROMO NOW!
+            </button>
+        </div>
+
       </div>
     </section>
   );
@@ -167,11 +176,6 @@ const IncomePotentialSection = () => (
             <li className="flex items-start"><span className="text-brand-secondary font-bold mr-2">✔</span><span><strong className="text-brand-primary">Service Fees:</strong> Magpatong ng sarili mong service fee sa bawat transaction.</span></li>
             <li className="flex items-start"><span className="text-brand-secondary font-bold mr-2">✔</span><span><strong className="text-brand-primary">Optional Referrals:</strong> May extra income sa pag-refer ng iba (pero hindi sapilitan).</span></li>
           </ul>
-           <div className="mt-8 bg-blue-100 border-l-4 border-brand-accent text-brand-dark p-4 rounded">
-            <h4 className="font-bold">Sample Income Computation</h4>
-            <p className="text-3xl font-bold text-brand-primary">₱24,900<span className="text-lg font-normal">/month*</span></p>
-            <p className="text-sm">*Estimated based on ₱830 average daily earnings. Results may vary.</p>
-          </div>
         </div>
         <div>
             <h3 className="text-2xl font-semibold mb-6 text-center md:text-left">Earnings per Transaction</h3>
@@ -192,6 +196,11 @@ const IncomePotentialSection = () => (
                         <tr className="bg-gray-50"><td className="p-3 font-medium">Bills Payment</td><td className="p-3">₱10 – ₱20</td></tr>
                     </tbody>
                 </table>
+            </div>
+            <div className="mt-8 bg-blue-100 border-l-4 border-brand-accent text-brand-dark p-4 rounded">
+              <h4 className="font-bold">Sample Income Computation</h4>
+              <p className="text-3xl font-bold text-brand-primary">₱24,900<span className="text-lg font-normal">/month*</span></p>
+              <p className="text-sm">*Estimated based on ₱830 average daily earnings. Results may vary.</p>
             </div>
         </div>
       </div>
@@ -304,7 +313,7 @@ const LandingPage: React.FC = () => {
                 videoId={presentationVideoId}
             />
             <AboutSection />
-            <PackageDetailsSection />
+            <PackageDetailsSection onCTAClick={handleCTAClick} />
             <IncomePotentialSection />
             <WhyChooseUsSection />
             <TestimonialsSection />
