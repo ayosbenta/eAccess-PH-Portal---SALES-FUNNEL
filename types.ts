@@ -1,10 +1,10 @@
 
+// FIX: Added missing LeadData interface. This was causing an import error in context/FunnelContext.tsx.
 export interface LeadData {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  mobileNumber: string;
-  messengerLink: string;
-  referralCode?: string;
+  phone: string;
 }
 
 export interface Testimonial {
