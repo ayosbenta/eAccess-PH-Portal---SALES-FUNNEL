@@ -1,13 +1,11 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../components/CountdownTimer';
 import VideoModal from '../components/VideoModal';
 import { Testimonial } from '../types';
 import { 
-    BillsIcon, BoltIcon, CheckCircleIcon, EloadIcon, FerryIcon, FlightIcon, 
-    GraduationCapIcon, HotelIcon, InsuranceIcon, PlayIcon, StorefrontIcon, 
-    TargetIcon, TourIcon, VisaIcon, WalletIcon 
+    BoltIcon, GraduationCapIcon, GreenCheckIcon, InsuranceIcon, PackageBriefcaseIcon, PlayIcon, 
+    ServicesAirplaneIcon, StarIcon, StorefrontIcon, TargetIcon, WalletIcon 
 } from '../components/icons';
 
 // --- Hero Section --- //
@@ -90,62 +88,71 @@ const InfoCard: React.FC<{ title: string; description: string }> = ({ title, des
 );
 
 // --- Package Details Section --- //
-const PackageDetailsSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => (
-  <section className="py-16 bg-white">
-    <div className="max-w-6xl mx-auto px-4">
-      <h2 className="text-3xl font-bold text-center mb-12">Package Details & Inclusions</h2>
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 className="text-2xl font-semibold mb-6">Services Offered</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-            <ServiceItem icon={<FlightIcon />} name="Flights" />
-            <ServiceItem icon={<HotelIcon />} name="Hotels" />
-            <ServiceItem icon={<FerryIcon />} name="Ferry" />
-            <ServiceItem icon={<TourIcon />} name="Tours" />
-            <ServiceItem icon={<BillsIcon />} name="Bills Payment" />
-            <ServiceItem icon={<EloadIcon />} name="E-Loading" />
-            <ServiceItem icon={<InsuranceIcon />} name="Insurance" />
-            <ServiceItem icon={<VisaIcon />} name="Visa Application" />
-          </div>
+const PackageDetailsSection = () => {
+  const services = [
+    "Flight Booking", "Hotel Booking", "Ferry Booking",
+    "Tours and Packages", "Bills Payment", "E-Loading",
+    "Insurance", "Visa Application"
+  ];
+
+  const inclusions = [
+    "One-Time Payment", "No Networking", "Operate Under Your Own Business Name",
+    "Custom Logo and Branding", "Free Recorded Video Trainings", "Downloadable Manual",
+    "Printable Tarpaulin", "Marketing Materials"
+  ];
+
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4">
+        <h2 className="text-4xl font-extrabold text-center mb-4 text-blue-800">
+            Ang eAccess PH Portal <span className="text-amber-600">Business Package</span>
+        </h2>
+        
+        <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white rounded-xl shadow-2xl p-8 text-center my-12">
+            <p className="text-2xl font-bold tracking-widest uppercase">Lifetime Business Access</p>
+            <p className="text-sm font-light mt-1">Original Price: <span className="line-through">₱9,998</span></p>
+            <p className="font-extrabold my-2 text-8xl">
+                ₱4,998
+            </p>
+            <p className="text-lg font-semibold tracking-wide">PROMO PRICE - One-Time Payment!</p>
         </div>
-        <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
-          <h3 className="text-2xl font-semibold mb-6">Package Inclusions</h3>
-          <ul className="space-y-4">
-            <InclusionItem text="One-Time Payment" />
-            <InclusionItem text="Lifetime Access" />
-            <InclusionItem text="No Networking / No Quota" />
-            <InclusionItem text="Operate Under Your Own Name" />
-            <InclusionItem text="Custom Branding" />
-            <InclusionItem text="Training Videos & Manual" />
-            <InclusionItem text="Printable Tarpaulin Design" />
-            <InclusionItem text="Marketing Materials" />
-          </ul>
-           <button 
-            onClick={onCTAClick}
-            className="mt-8 w-full bg-brand-secondary text-brand-dark font-bold text-lg py-3 px-8 rounded-lg shadow-md hover:bg-yellow-400 transform hover:scale-105 transition-all duration-300"
-          >
-            GRAB THE ₱4,998 PROMO NOW!
-          </button>
+
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="bg-blue-50 rounded-xl shadow-lg border-l-8 border-blue-400 p-6 h-full">
+            <div className="flex items-center mb-4">
+              <ServicesAirplaneIcon />
+              <h3 className="text-2xl font-bold text-blue-800 ml-3">Services Offered</h3>
+            </div>
+            <ul className="space-y-3">
+              {services.map(service => (
+                <li key={service} className="flex items-center font-medium text-gray-800">
+                  <GreenCheckIcon />
+                  <span className="ml-3">{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-amber-50 rounded-xl shadow-lg border-l-8 border-amber-400 p-6 h-full">
+            <div className="flex items-center mb-4">
+              <PackageBriefcaseIcon />
+              <h3 className="text-2xl font-bold text-amber-900 ml-3">Package Inclusions</h3>
+            </div>
+            <ul className="space-y-3">
+              {inclusions.map(inclusion => (
+                <li key={inclusion} className="flex items-start font-medium text-gray-800">
+                  <StarIcon />
+                  <span className="ml-3">{inclusion}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
-);
-
-const ServiceItem: React.FC<{ icon: React.ReactNode; name: string }> = ({ icon, name }) => (
-    <div className="flex flex-col items-center">
-        <div className="h-8 w-8 text-brand-primary">{icon}</div>
-        <p className="mt-2 font-medium text-gray-700">{name}</p>
-    </div>
-);
-
-const InclusionItem: React.FC<{ text: string }> = ({ text }) => (
-    <li className="flex items-center">
-        <CheckCircleIcon />
-        <span className="ml-3 text-gray-700">{text}</span>
-    </li>
-);
-
+    </section>
+  );
+};
 
 // --- Income Potential Section --- //
 const IncomePotentialSection = () => (
@@ -297,7 +304,7 @@ const LandingPage: React.FC = () => {
                 videoId={presentationVideoId}
             />
             <AboutSection />
-            <PackageDetailsSection onCTAClick={handleCTAClick} />
+            <PackageDetailsSection />
             <IncomePotentialSection />
             <WhyChooseUsSection />
             <TestimonialsSection />

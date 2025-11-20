@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const FlightIcon = () => (
@@ -99,5 +98,29 @@ export const GraduationCapIcon = () => (
 export const StorefrontIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5A2.25 2.25 0 0011.25 11.25H6.75A2.25 2.25 0 004.5 13.5V21M6 10.5h12M6 10.5a2.25 2.25 0 01-2.25-2.25V6a2.25 2.25 0 012.25-2.25h12A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5M18 10.5V21m-12-10.5v10.5" />
+    </svg>
+);
+
+export const ServicesAirplaneIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+      <path fill="#2563EB" d="M21.43,11.23l-7-8A3,3,0,0,0,12,2h0a3,3,0,0,0-2.43,1.23l-7,8a3,3,0,0,0,1,4.77L9,14.51V19L7,20.36V22h10v-1.64L15,19V14.51l5.43,1.49A3,3,0,0,0,21.43,11.23Z"/>
+    </svg>
+);
+
+export const PackageBriefcaseIcon = () => (
+     <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
+       <path fill="#854d0e" d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/>
+     </svg>
+);
+
+export const StarIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400 shrink-0" viewBox="0 0 20 20" fill="currentColor" stroke="#A16207" strokeWidth="1">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    </svg>
+);
+
+export const GreenCheckIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
 );
