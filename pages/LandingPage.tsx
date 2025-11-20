@@ -49,7 +49,7 @@ const HeroSection: React.FC<{ onCTAClick: () => void }> = ({ onCTAClick }) => {
 };
 
 // --- Video Preview Section --- //
-const VideoPreviewSection: React.FC<{ onPlayClick: () => void }> = ({ onPlayClick }) => (
+const VideoPreviewSection: React.FC<{ onPlayClick: () => void; videoId: string }> = ({ onPlayClick, videoId }) => (
   <section className="py-16 bg-white text-center">
     <div className="max-w-4xl mx-auto px-4">
       <h2 className="text-3xl font-bold mb-4">Panoorin ang Kumpletong Presentasyon</h2>
@@ -58,7 +58,7 @@ const VideoPreviewSection: React.FC<{ onPlayClick: () => void }> = ({ onPlayClic
         onClick={onPlayClick}
         className="relative max-w-2xl mx-auto rounded-lg overflow-hidden shadow-2xl cursor-pointer group"
       >
-        <img src="https://picsum.photos/800/450?random=2" alt="Video Presentation Thumbnail" className="w-full h-auto transition-transform duration-300 group-hover:scale-105"/>
+        <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} alt="Video Presentation Thumbnail" className="w-full h-auto transition-transform duration-300 group-hover:scale-105"/>
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300 group-hover:bg-opacity-20">
           <PlayIcon />
         </div>
@@ -283,6 +283,7 @@ const NoticeSection = () => (
 const LandingPage: React.FC = () => {
     const [isVideoModalOpen, setVideoModalOpen] = useState(false);
     const navigate = useNavigate();
+    const presentationVideoId = "FvOz70rWHXM";
 
     const handleCTAClick = () => {
         navigate('/signup');
@@ -291,7 +292,10 @@ const LandingPage: React.FC = () => {
     return (
         <div>
             <HeroSection onCTAClick={handleCTAClick} />
-            <VideoPreviewSection onPlayClick={() => setVideoModalOpen(true)} />
+            <VideoPreviewSection 
+                onPlayClick={() => setVideoModalOpen(true)} 
+                videoId={presentationVideoId}
+            />
             <AboutSection />
             <PackageDetailsSection onCTAClick={handleCTAClick} />
             <IncomePotentialSection />
@@ -299,7 +303,11 @@ const LandingPage: React.FC = () => {
             <TestimonialsSection />
             <JoinNowSection onCTAClick={handleCTAClick} />
             <NoticeSection />
-            <VideoModal isOpen={isVideoModalOpen} onClose={() => setVideoModalOpen(false)} videoId="FvOz70rWHXM" />
+            <VideoModal 
+                isOpen={isVideoModalOpen} 
+                onClose={() => setVideoModalOpen(false)} 
+                videoId={presentationVideoId} 
+            />
         </div>
     );
 };
