@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import CountdownTimer from '../components/CountdownTimer';
 import VideoModal from '../components/VideoModal';
 import { Testimonial } from '../types';
@@ -298,11 +297,10 @@ const NoticeSection = () => (
 // --- Landing Page --- //
 const LandingPage: React.FC = () => {
     const [isVideoModalOpen, setVideoModalOpen] = useState(false);
-    const navigate = useNavigate();
     const presentationVideoId = "FvOz70rWHXM";
 
     const handleCTAClick = () => {
-        navigate('/signup');
+        window.open('https://eaccessph.com/register/100000799', '_blank', 'noopener,noreferrer');
     };
 
     return (
